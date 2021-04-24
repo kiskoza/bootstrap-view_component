@@ -5,10 +5,10 @@ module Bootstrap
     renders_one :brand, Bootstrap::Navbar::Brand
     renders_many :items, Bootstrap::Navbar::Item
 
-    def initialize(expand: 'lg', theme: 'light', background: nil)
+    def initialize(expand: 'lg', theme: nil, background: nil)
       @expand = expand
       @theme = theme
-      @background = background || theme
+      @background = background
     end
 
     def before_render
@@ -47,11 +47,17 @@ module Bootstrap
       end
     end
 
+    def theme
+      @theme || Bootstrap::ViewComponent.config.theme
+    end
+
+    def background
+      @background || theme
+    end
+
     private
 
     attr_reader :expand
-    attr_reader :theme
-    attr_reader :background
 
     def collapse_id
       @collapse_id ||= "bs_navbar_collapse_#{object_id}"

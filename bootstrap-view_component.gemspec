@@ -1,6 +1,8 @@
+require 'bootstrap/view_components/version'
+
 Gem::Specification.new do |spec|
   spec.name          = 'bootstrap-view_component'
-  spec.version       = '0.0.1'
+  spec.version       = Bootstrap::ViewComponent::VERSION
   spec.summary       = "Reusable ViewComponents for Bootstrap 5"
   spec.description   = "Reusable ViewComponents for Bootstrap 5"
   spec.authors       = ["Zsolt Kozaroczy"]

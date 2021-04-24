@@ -5,8 +5,10 @@ Gem::Specification.new do |spec|
   spec.description   = "Reusable ViewComponents for Bootstrap 5"
   spec.authors       = ["Zsolt Kozaroczy"]
   spec.email         = 'kiskoza@gmail.com'
-  spec.files         = `git ls-files -z lib LICENSE.txt README.md`.split("\x0")
+  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*"]
   spec.require_paths = ["lib"]
   spec.homepage      = 'https://github.com/kiskoza/bootstrap-view_component'
   spec.license       = 'MIT'
+
+  spec.add_dependency 'view_component', '~> 2.30.0'
 end

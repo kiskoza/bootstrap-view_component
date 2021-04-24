@@ -1,6 +1,8 @@
 require 'view_component/engine'
 
-require_relative 'bootstrap/view_component/config'
+require 'bootstrap/view_component/config'
+require 'bootstrap/view_component/engine'
+require 'bootstrap/view_component/base'
 
 module Bootstrap
   module ViewComponent

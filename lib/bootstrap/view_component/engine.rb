@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Bootstrap
-  module ViewComponent #:nodoc:
-    class Engine < ::Rails::Engine #:nodoc:
+  module ViewComponent
+    class Engine < ::Rails::Engine
       require 'jquery-rails'
     end
   end

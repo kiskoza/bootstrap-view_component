@@ -4,6 +4,8 @@ module Bootstrap
   class Dropdown
     class Item < ViewComponent::Base
       def initialize(text: nil, link: '#')
+        super
+
         @link = link
         @text = text
       end

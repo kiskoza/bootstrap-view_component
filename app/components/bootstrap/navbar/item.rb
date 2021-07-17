@@ -9,6 +9,8 @@ module Bootstrap
       attr_accessor :theme
 
       def initialize(link: '#', active: false, text: nil)
+        super
+
         @active = active
         @link = link
         @text = text
@@ -19,16 +21,22 @@ module Bootstrap
       end
 
       def before_render
-        if dropdown
-          dropdown.id = dropdown_id
-          dropdown.theme ||= theme
-        end
+        return unless dropdown
+
+        dropdown.id = dropdown_id
+        dropdown.theme ||= theme
       end
 
       def call
         if dropdown
-          content_tag :li, class: "nav-item dropdown" do
-            concat link_to text || content, '#', class: 'nav-link dropdown-toggle', id: dropdown_id, role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expand': false
+          content_tag :li, class: 'nav-item dropdown' do
+            concat link_to(text || content,
+                           '#',
+                           class: 'nav-link dropdown-toggle',
+                           id: dropdown_id,
+                           role: 'button',
+                           'data-bs-toggle': 'dropdown',
+                           'aria-expand': false)
             concat dropdown
           end
         else

@@ -8,6 +8,8 @@ module Bootstrap
     renders_many :items, Bootstrap::Dropdown::Item
 
     def initialize(theme: nil)
+      super
+
       @theme = theme
     end
 

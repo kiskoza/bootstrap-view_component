@@ -4,6 +4,8 @@ module Bootstrap
   class Card
     class Header < ViewComponent::Base
       def initialize(text: nil)
+        super
+
         @text = text
       end
 

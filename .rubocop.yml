@@ -1,0 +1,25 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.5
+
+# Manual excludes
+
+Naming/FileName:
+  Exclude:
+    - 'lib/bootstrap-view_component.rb'
+
+# Rule overrides
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+# Turn off not required rules
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

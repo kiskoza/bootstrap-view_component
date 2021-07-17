@@ -4,6 +4,8 @@ module Bootstrap
   class Navbar
     class Brand < ViewComponent::Base
       def initialize(link: '#', text: nil)
+        super
+
         @link = link
         @text = text
       end

@@ -6,6 +6,8 @@ module Bootstrap
     renders_many :items, Bootstrap::Navbar::Item
 
     def initialize(expand: 'lg', theme: nil, background: nil)
+      super
+
       @expand = expand
       @theme = theme
       @background = background

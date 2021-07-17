@@ -4,6 +4,8 @@ module Bootstrap
   class ListGroup
     class Item < ViewComponent::Base
       def initialize(text: nil, action: false, link: '#')
+        super
+
         @text = text
         @action = action
         @link = link

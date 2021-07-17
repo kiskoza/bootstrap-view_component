@@ -1,4 +1,4 @@
-require 'bootstrap/view_components/version'
+require_relative 'lib/bootstrap/view_component/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'bootstrap-view_component'

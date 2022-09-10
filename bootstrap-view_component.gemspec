@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.homepage      = 'https://github.com/kiskoza/bootstrap-view_component'
   spec.license       = 'MIT'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   spec.required_ruby_version = '>= 2.5.0'
   spec.add_dependency 'view_component', '~> 2.30'

@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'rubocop', '1.18.3'
+gem 'rubocop', '1.36.0'

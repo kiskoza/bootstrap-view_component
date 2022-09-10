@@ -2,14 +2,14 @@
 
 module Bootstrap
   class Navbar
-    class Item < ViewComponent::Base
+    class Item < Bootstrap::BaseComponent
       renders_one :dropdown, Bootstrap::Dropdown
 
       attr_accessor :background
       attr_accessor :theme
 
-      def initialize(link: '#', active: false, text: nil)
-        super
+      def initialize(link: '#', active: false, text: nil, **args)
+        super(**args)
 
         @active = active
         @link = link
@@ -29,7 +29,7 @@ module Bootstrap
 
       def call
         if dropdown
-          content_tag :li, class: 'nav-item dropdown' do
+          content_tag :li, class: "nav-item dropdown #{class_names}" do
             concat link_to(text || content,
                            '#',
                            class: 'nav-link dropdown-toggle',
@@ -40,7 +40,7 @@ module Bootstrap
             concat dropdown
           end
         else
-          content_tag :li, class: 'nav-item' do
+          content_tag :li, class: "nav-item #{class_names}" do
             link_to link, class: "nav-link #{active ? 'active' : ''}" do
               text ? concat(text) : content
             end

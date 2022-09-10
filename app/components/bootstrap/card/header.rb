@@ -2,9 +2,9 @@
 
 module Bootstrap
   class Card
-    class Header < ViewComponent::Base
-      def initialize(text: nil)
-        super
+    class Header < Bootstrap::BaseComponent
+      def initialize(text: nil, **args)
+        super(**args)
 
         @text = text
       end
@@ -14,7 +14,7 @@ module Bootstrap
       end
 
       def call
-        content_tag :div, class: 'card-header' do
+        content_tag :div, class: "card-header #{class_names}" do
           text ? concat(text) : content
         end
       end

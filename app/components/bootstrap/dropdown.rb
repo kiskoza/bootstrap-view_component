@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Bootstrap
-  class Dropdown < ViewComponent::Base
+  class Dropdown < Bootstrap::BaseComponent
     attr_writer :id
     attr_writer :theme
 
     renders_many :items, Bootstrap::Dropdown::Item
 
-    def initialize(theme: nil)
-      super
+    def initialize(theme: nil, **args)
+      super(**args)
 
       @theme = theme
     end
@@ -18,7 +18,7 @@ module Bootstrap
     end
 
     def call
-      content_tag :ul, class: "dropdown-menu dropdown-menu-#{theme}", 'aria-labelledby': id do
+      content_tag :ul, class: "dropdown-menu dropdown-menu-#{theme} #{class_names}", 'aria-labelledby': id do
         items.each do |item|
           concat item
         end

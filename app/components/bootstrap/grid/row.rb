@@ -2,11 +2,11 @@
 
 module Bootstrap
   module Grid
-    class Row < ViewComponent::Base
+    class Row < Bootstrap::BaseComponent
       renders_many :columns, Bootstrap::Grid::Col
 
       def call
-        content_tag :div, class: 'row' do
+        content_tag :div, class: "row #{class_names}" do
           columns.each do |col|
             concat col
           end

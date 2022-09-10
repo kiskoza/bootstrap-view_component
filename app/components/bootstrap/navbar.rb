@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Bootstrap
-  class Navbar < ViewComponent::Base
+  class Navbar < Bootstrap::BaseComponent
     renders_one :brand, Bootstrap::Navbar::Brand
     renders_many :items, Bootstrap::Navbar::Item
 
-    def initialize(expand: 'lg', theme: nil, background: nil)
-      super
+    def initialize(expand: 'lg', theme: nil, background: nil, **args)
+      super(**args)
 
       @expand = expand
       @theme = theme
@@ -20,7 +20,7 @@ module Bootstrap
     end
 
     def call
-      content_tag :nav, class: "navbar navbar-expand-#{expand} navbar-#{theme} bg-#{background}" do
+      content_tag :nav, class: "navbar navbar-expand-#{expand} navbar-#{theme} bg-#{background} #{class_names}" do
         content_tag :div, class: 'container-fluid' do
           concat brand
           concat(

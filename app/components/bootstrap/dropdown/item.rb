@@ -2,9 +2,9 @@
 
 module Bootstrap
   class Dropdown
-    class Item < ViewComponent::Base
-      def initialize(text: nil, link: '#')
-        super
+    class Item < Bootstrap::BaseComponent
+      def initialize(text: nil, link: '#', **args)
+        super(**args)
 
         @link = link
         @text = text
@@ -16,7 +16,7 @@ module Bootstrap
 
       def call
         content_tag :li do
-          link_to link, class: 'dropdown-item' do
+          link_to link, class: "dropdown-item #{class_names}" do
             text ? concat(text) : content
           end
         end

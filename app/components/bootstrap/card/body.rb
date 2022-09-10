@@ -2,7 +2,7 @@
 
 module Bootstrap
   class Card
-    class Body < ViewComponent::Base
+    class Body < Bootstrap::BaseComponent
       renders_one :text, Bootstrap::ContentTag
       renders_one :title, Bootstrap::ContentTag
       renders_one :subtitle, Bootstrap::ContentTag
@@ -14,22 +14,22 @@ module Bootstrap
       def before_render
         if title
           title.tag ||= :h4
-          title.classes = ['card-title', *title.classes]
+          title.class_names = ['card-title', *title.class_names]
         end
 
         if text
           text.tag ||= :p
-          text.classes = ['card-text', *text.classes]
+          text.class_names = ['card-text', *text.class_names]
         end
 
         if subtitle
           subtitle.tag ||= :h6
-          subtitle.classes = ['card-subtitle', *subtitle.classes]
+          subtitle.class_names = ['card-subtitle', *subtitle.class_names]
         end
       end
 
       def call
-        content_tag :div, class: 'card-body' do
+        content_tag :div, class: "card-body #{class_names}" do
           concat(title)
           concat(subtitle)
           concat(text)

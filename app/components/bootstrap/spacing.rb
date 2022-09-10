@@ -4,9 +4,9 @@ require 'bootstrap/view_component/spacing/property'
 require 'bootstrap/view_component/spacing/sides'
 
 module Bootstrap
-  class Spacing < ViewComponent::Base
-    def initialize(property:, size:, sides: :all, breakpoint: nil)
-      super
+  class Spacing < Bootstrap::BaseComponent
+    def initialize(property:, size:, sides: :all, breakpoint: nil, **args)
+      super(**args)
 
       @property = Bootstrap::ViewComponent::Spacing::Property.new(property)
       @sides = Bootstrap::ViewComponent::Spacing::Sides.new(sides)
@@ -15,7 +15,7 @@ module Bootstrap
     end
 
     def call
-      content_tag :div, class: "#{property}#{sides}#{breakpoint}-#{size}" do
+      content_tag :div, class: "#{property}#{sides}#{breakpoint}-#{size} #{class_names}" do
         concat content
       end
     end

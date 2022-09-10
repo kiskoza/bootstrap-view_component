@@ -2,9 +2,9 @@
 
 module Bootstrap
   class ListGroup
-    class Item < ViewComponent::Base
-      def initialize(text: nil, action: false, link: '#')
-        super
+    class Item < Bootstrap::BaseComponent
+      def initialize(text: nil, action: false, link: '#', **args)
+        super(**args)
 
         @text = text
         @action = action
@@ -17,11 +17,11 @@ module Bootstrap
 
       def call
         if action
-          link_to link, class: 'list-group-item list-group-item-action' do
+          link_to link, class: "list-group-item list-group-item-action #{class_names}" do
             text ? concat(text) : content
           end
         else
-          content_tag :li, class: 'list-group-item' do
+          content_tag :li, class: "list-group-item #{class_names}" do
             text ? concat(text) : content
           end
         end

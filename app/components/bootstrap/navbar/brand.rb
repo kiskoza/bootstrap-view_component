@@ -2,9 +2,9 @@
 
 module Bootstrap
   class Navbar
-    class Brand < ViewComponent::Base
-      def initialize(link: '#', text: nil)
-        super
+    class Brand < Bootstrap::BaseComponent
+      def initialize(link: '#', text: nil, **args)
+        super(**args)
 
         @link = link
         @text = text
@@ -15,7 +15,7 @@ module Bootstrap
       end
 
       def call
-        link_to link, class: 'navbar-brand' do
+        link_to link, class: "navbar-brand #{class_names}" do
           text ? concat(text) : content
         end
       end

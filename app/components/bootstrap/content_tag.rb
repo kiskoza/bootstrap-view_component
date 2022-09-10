@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 module Bootstrap
-  class ContentTag < ViewComponent::Base
+  class ContentTag < Bootstrap::BaseComponent
     attr_accessor :tag
-    attr_accessor :classes
     attr_accessor :text
 
-    def initialize(tag: nil, classes: nil, text: nil)
-      super
+    def initialize(tag: nil, text: nil, **args)
+      super(**args)
 
       @tag = tag
-      @classes = classes ? [*classes].join(' ') : nil
       @text = text
     end
 
@@ -19,7 +17,7 @@ module Bootstrap
     end
 
     def call
-      content_tag(tag || :div, class: classes || '') do
+      content_tag(tag || :div, class: class_names.to_s) do
         text ? concat(text) : content
       end
     end

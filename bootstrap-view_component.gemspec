@@ -15,5 +15,5 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.required_ruby_version = '>= 2.5.0'
-  spec.add_dependency 'view_component', '~> 2.30.0'
+  spec.add_dependency 'view_component', '~> 2.30'
 end

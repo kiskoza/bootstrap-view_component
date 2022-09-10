@@ -16,6 +16,7 @@ module Bootstrap
         rows.each do |row|
           concat row
         end
+        concat(content)
       end
     end
 

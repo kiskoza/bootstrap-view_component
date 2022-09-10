@@ -3,25 +3,32 @@
 module Bootstrap
   class Card
     class Body < ViewComponent::Base
-      def initialize(text: nil)
-        super
-
-        @text = text
-      end
+      renders_one :text, Bootstrap::ContentTag
+      renders_one :title, Bootstrap::ContentTag
 
       def render?
-        text || content
+        text || title || content
+      end
+
+      def before_render
+        if title
+          title.tag ||= :h4
+          title.classes = ['card-title', *title.classes]
+        end
+
+        if text
+          text.tag ||= :p
+          text.classes = ['card-text', *text.classes]
+        end
       end
 
       def call
         content_tag :div, class: 'card-body' do
-          text ? concat(text) : content
+          concat(title)
+          concat(text)
+          concat(content)
         end
       end
-
-      private
-
-      attr_reader :text
     end
   end
 end

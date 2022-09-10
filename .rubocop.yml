@@ -13,6 +13,9 @@ Naming/FileName:
 Style/AccessorGrouping:
   EnforcedStyle: separated
 
+Style/GuardClause:
+  AllowConsecutiveConditionals: true
+
 # Turn off not required rules
 
 Metrics/AbcSize:

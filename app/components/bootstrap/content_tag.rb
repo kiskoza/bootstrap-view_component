@@ -17,8 +17,10 @@ module Bootstrap
     end
 
     def call
-      content_tag(tag || :div, class: class_names.to_s) do
-        text ? concat(text) : content
+      super do
+        content_tag(tag || :div, class: class_names.to_s) do
+          content || concat(text)
+        end
       end
     end
   end

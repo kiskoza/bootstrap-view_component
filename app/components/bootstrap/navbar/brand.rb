@@ -15,8 +15,10 @@ module Bootstrap
       end
 
       def call
-        link_to link, class: "navbar-brand #{class_names}" do
-          text ? concat(text) : content
+        super do
+          link_to link, class: "navbar-brand #{class_names}" do
+            content || concat(text)
+          end
         end
       end
 

@@ -28,21 +28,24 @@ module Bootstrap
       end
 
       def call
-        if dropdown
-          content_tag :li, class: "nav-item dropdown #{class_names}" do
-            concat link_to(text || content,
-                           '#',
-                           class: 'nav-link dropdown-toggle',
-                           id: dropdown_id,
-                           role: 'button',
-                           'data-bs-toggle': 'dropdown',
-                           'aria-expand': false)
-            concat dropdown
-          end
-        else
-          content_tag :li, class: "nav-item #{class_names}" do
-            link_to link, class: "nav-link #{active ? 'active' : ''}" do
-              text ? concat(text) : content
+        super do
+          if dropdown
+            content_tag :li, class: "nav-item dropdown #{class_names}" do
+              concat(link_to('#',
+                             class: 'nav-link dropdown-toggle',
+                             id: dropdown_id,
+                             role: 'button',
+                             'data-bs-toggle': 'dropdown',
+                             'aria-expand': false) do
+                               content || concat(text)
+                             end)
+              concat dropdown
+            end
+          else
+            content_tag :li, class: "nav-item #{class_names}" do
+              link_to link, class: "nav-link #{active ? 'active' : ''}" do
+                content || concat(text)
+              end
             end
           end
         end

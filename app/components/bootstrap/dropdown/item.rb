@@ -15,9 +15,11 @@ module Bootstrap
       end
 
       def call
-        content_tag :li do
-          link_to link, class: "dropdown-item #{class_names}" do
-            text ? concat(text) : content
+        super do
+          content_tag :li do
+            link_to link, class: "dropdown-item #{class_names}" do
+              content || concat(text)
+            end
           end
         end
       end

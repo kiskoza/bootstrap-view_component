@@ -14,8 +14,10 @@ module Bootstrap
       end
 
       def call
-        content_tag :div, class: "card-header #{class_names}" do
-          text ? concat(text) : content
+        super do
+          content_tag :div, class: "card-header #{class_names}" do
+            content || concat(text)
+          end
         end
       end
 

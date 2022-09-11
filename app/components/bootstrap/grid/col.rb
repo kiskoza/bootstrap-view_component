@@ -14,8 +14,10 @@ module Bootstrap
       end
 
       def call
-        content_tag :div, class: "col #{width_modifier} #{offset_modifier} #{class_names}" do
-          content
+        super do
+          content_tag :div, class: "col #{width_modifier} #{offset_modifier} #{class_names}" do
+            content
+          end
         end
       end
 

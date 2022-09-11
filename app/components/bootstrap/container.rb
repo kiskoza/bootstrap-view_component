@@ -12,11 +12,12 @@ module Bootstrap
     end
 
     def call
-      content_tag :div, class: "#{container} #{class_names}" do
-        rows.each do |row|
-          concat row
+      super do
+        content_tag :div, class: "#{container} #{class_names}" do
+          content || rows.each do |row|
+            concat row
+          end
         end
-        concat(content)
       end
     end
 

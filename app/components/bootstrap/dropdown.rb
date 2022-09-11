@@ -18,9 +18,11 @@ module Bootstrap
     end
 
     def call
-      content_tag :ul, class: "dropdown-menu dropdown-menu-#{theme} #{class_names}", 'aria-labelledby': id do
-        items.each do |item|
-          concat item
+      super do
+        content_tag :ul, class: "dropdown-menu dropdown-menu-#{theme} #{class_names}", 'aria-labelledby': id do
+          content || items.each do |item|
+            concat item
+          end
         end
       end
     end

@@ -20,31 +20,36 @@ module Bootstrap
     end
 
     def call
-      content_tag :nav, class: "navbar navbar-expand-#{expand} navbar-#{theme} bg-#{background} #{class_names}" do
-        content_tag :div, class: 'container-fluid' do
-          concat brand
-          concat(
-            content_tag(:button,
-                        class: 'navbar-toggler',
-                        type: 'button',
-                        'data-bs-toggle': 'collapse',
-                        'data-bs-target': "##{collapse_id}",
-                        'aria-controls': 'navbarSupportedContent',
-                        'aria-expanded': 'false',
-                        'aria-label': 'Toggle navigation') do
-              content_tag :span, '', class: 'navbar-toggler-icon'
-            end
-          )
-          concat(
-            content_tag(:div, class: 'collapse navbar-collapse', id: collapse_id) do
-              content_tag :ul, class: 'navbar-nav me-auto mb-2 mb-lg-0' do
-                items.each do |item|
-                  concat(item)
+      super do
+        content_tag :nav, class: "navbar navbar-expand-#{expand} navbar-#{theme} bg-#{background} #{class_names}" do
+          content_tag :div, class: 'container-fluid' do
+            if content
+              content
+            else
+              concat brand
+              concat(
+                content_tag(:button,
+                            class: 'navbar-toggler',
+                            type: 'button',
+                            'data-bs-toggle': 'collapse',
+                            'data-bs-target': "##{collapse_id}",
+                            'aria-controls': 'navbarSupportedContent',
+                            'aria-expanded': 'false',
+                            'aria-label': 'Toggle navigation') do
+                  content_tag :span, '', class: 'navbar-toggler-icon'
                 end
-              end
+              )
+              concat(
+                content_tag(:div, class: 'collapse navbar-collapse', id: collapse_id) do
+                  content_tag :ul, class: 'navbar-nav me-auto mb-2 mb-lg-0' do
+                    items.each do |item|
+                      concat(item)
+                    end
+                  end
+                end
+              )
             end
-          )
-          concat content
+          end
         end
       end
     end

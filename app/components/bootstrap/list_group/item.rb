@@ -16,13 +16,15 @@ module Bootstrap
       end
 
       def call
-        if action
-          link_to link, class: "list-group-item list-group-item-action #{class_names}" do
-            text ? concat(text) : content
-          end
-        else
-          content_tag :li, class: "list-group-item #{class_names}" do
-            text ? concat(text) : content
+        super do
+          if action
+            link_to link, class: "list-group-item list-group-item-action #{class_names}" do
+              content || concat(text)
+            end
+          else
+            content_tag :li, class: "list-group-item #{class_names}" do
+              content || concat(text)
+            end
           end
         end
       end

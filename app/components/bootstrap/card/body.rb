@@ -29,11 +29,16 @@ module Bootstrap
       end
 
       def call
-        content_tag :div, class: "card-body #{class_names}" do
-          concat(title)
-          concat(subtitle)
-          concat(text)
-          concat(content)
+        super do
+          content_tag :div, class: "card-body #{class_names}" do
+            if content
+              content
+            else
+              concat(title)
+              concat(subtitle)
+              concat(text)
+            end
+          end
         end
       end
     end

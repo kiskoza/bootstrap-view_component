@@ -15,8 +15,10 @@ module Bootstrap
     end
 
     def call
-      content_tag :div, class: "#{property}#{sides}#{breakpoint}-#{size} #{class_names}" do
-        concat content
+      super do
+        content_tag :div, class: "#{property}#{sides}#{breakpoint}-#{size} #{class_names}" do
+          content
+        end
       end
     end
 

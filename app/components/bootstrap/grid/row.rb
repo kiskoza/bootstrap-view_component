@@ -6,11 +6,12 @@ module Bootstrap
       renders_many :columns, Bootstrap::Grid::Col
 
       def call
-        content_tag :div, class: "row #{class_names}" do
-          columns.each do |col|
-            concat col
+        super do
+          content_tag :div, class: "row #{class_names}" do
+            content || columns.each do |col|
+              concat col
+            end
           end
-          content
         end
       end
     end
